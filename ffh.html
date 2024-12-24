@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Press-On Nails</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #ffcccc;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #ff6699;
+        }
+
+        .step {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select, input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #ff6699;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #ff3366;
+        }
+
+        .preview {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Design Your Own Press-On Nails</h1>
+    </header>
+
+    <div class="container">
+        <h2>Step 1: Choose Nail Shape</h2>
+        <div class="step">
+            <label for="shape">Select Shape:</label>
+            <select id="shape">
+                <option value="almond">Almond</option>
+                <option value="coffin">Coffin</option>
+                <option value="square">Square</option>
+                <option value="round">Round</option>
+            </select>
+        </div>
+
+        <h2>Step 2: Choose Nail Length</h2>
+        <div class="step">
+            <label for="length">Select Length:</label>
+            <select id="length">
+                <option value="short">Short</option>
+                <option value="medium">Medium</option>
+                <option value="long">Long</option>
+            </select>
+        </div>
+
+        <h2>Step 3: Choose Color Palette</h2>
+        <div class="step">
+            <label for="color">Select Color:</label>
+            <select id="color">
+                <option value="nude">Nude</option>
+                <option value="pink">Pink</option>
+                <option value="glitter">Glitter</option>
+                <option value="red">Red</option>
+            </select>
+        </div>
+
+        <h2>Step 4: Add Special Requests</h2>
+        <div class="step">
+            <label for="requests">Tell us your theme or details:</label>
+            <textarea id="requests" rows="4" placeholder="e.g., Wedding theme, floral design, etc."></textarea>
+        </div>
+
+        <h2>Preview</h2>
+        <div class="preview">
+            <p><strong>Shape:</strong> <span id="preview-shape">None</span></p>
+            <p><strong>Length:</strong> <span id="preview-length">None</span></p>
+            <p><strong>Color:</strong> <span id="preview-color">None</span></p>
+            <p><strong>Special Requests:</strong> <span id="preview-requests">None</span></p>
+        </div>
+
+        <button onclick="submitDesign()">Submit My Design</button>
+    </div>
+
+    <script>
+        // Update Preview in Real Time
+        const shapeSelect = document.getElementById('shape');
+        const lengthSelect = document.getElementById('length');
+        const colorSelect = document.getElementById('color');
+        const requestsTextarea = document.getElementById('requests');
+
+        const previewShape = document.getElementById('preview-shape');
+        const previewLength = document.getElementById('preview-length');
+        const previewColor = document.getElementById('preview-color');
+        const previewRequests = document.getElementById('preview-requests');
+
+        shapeSelect.addEventListener('change', () => previewShape.textContent = shapeSelect.value);
+        lengthSelect.addEventListener('change', () => previewLength.textContent = lengthSelect.value);
+        colorSelect.addEventListener('change', () => previewColor.textContent = colorSelect.value);
+        requestsTextarea.addEventListener('input', () => previewRequests.textContent = requestsTextarea.value);
+
+        function submitDesign() {
+            const design = {
+                shape: shapeSelect.value,
+                length: lengthSelect.value,
+                color: colorSelect.value,
+                requests: requestsTextarea.value
+            };
+            alert('Your design has been submitted!\n' + JSON.stringify(design, null, 2));
+        }
+    </script>
+</body>
+</html>
